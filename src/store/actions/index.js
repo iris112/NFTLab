@@ -63,6 +63,18 @@ export const getComments = asyncAction(
     'nft/GET_COMMENTS_FAIL'
 )();
 
+export const connectWallet = asyncAction(
+    'nft/CONNECT_WALLET',
+    'nft/CONNECT_WALLET_SUCCESS',
+    'nft/CONNECT_WALLET_FAIL'
+)();
+
+export const getNetId = asyncAction(
+    'nft/GET_NET_ID',
+    'nft/GET_NET_ID_SUCCESS',
+    'nft/GET_NET_ID_FAIL'
+)();
+
 export const clearNfts = action('nft/CLEAR_ALL_NFTS')();
 export const clearFilter = action('nft/CLEAR_FILTER')();
 export const filterCategories = action('nft/FILTER_CATEGORIES')();

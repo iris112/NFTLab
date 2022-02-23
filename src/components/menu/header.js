@@ -4,6 +4,10 @@ import Breakpoint, { BreakpointProvider, setDefaultBreakpoints } from "react-soc
 import { Link, useNavigate } from "react-router-dom";
 import useOnclickOutside from "react-cool-onclickoutside";
 import auth from '../../core/auth';
+import * as selectors from '../../store/selectors';
+import { useSelector } from "react-redux";
+import { mainNetId } from "../../core/opensea/constants";
+import { shortAddress } from "../../store/utils";
 
 
 setDefaultBreakpoints([
@@ -33,6 +37,26 @@ const Header = function({ className }) {
     const [openMenu1, setOpenMenu1] = React.useState(false);
     const [openMenu2, setOpenMenu2] = React.useState(false);
     const [openMenu3, setOpenMenu3] = React.useState(false);
+    const [connectButton, setConnectButton] = React.useState("Connect your wallet");
+    const connected = useSelector(selectors.walletConnectState);
+    const accountAddress = useSelector(selectors.walletAddressState);
+    const netId = useSelector(selectors.netIdState);
+
+    useEffect(() => {
+      console.log(netId, accountAddress);
+      if (accountAddress.loading) {
+        setConnectButton("waiting ...");
+      } else {
+        if (accountAddress.data) {
+          setConnectButton(shortAddress(accountAddress.data));
+          
+          if (netId.data != mainNetId) {
+            setConnectButton("wrongNet");
+          }
+        }
+      }
+    }, [accountAddress, netId, connected]);
+
     const handleBtnClick = () => {
       setOpenMenu(!openMenu);
     };
@@ -198,8 +222,8 @@ const Header = function({ className }) {
                       </div>
                       <div className='navbar-item'>
                         <NavLink className="connect-wallet" to="/wallet" onClick={() => btn_icon(!showmenu)}>
-                          <i className="fas fa-wallet"></i>&nbsp;
-                          Connect your wallet
+                          <i className="fas fa-wallet"></i>&nbsp;&nbsp;
+                          {connectButton}
                         </NavLink>
                       </div>
                     </div>
@@ -249,8 +273,8 @@ const Header = function({ className }) {
                     </div>
                     <div className='navbar-item'>
                       <NavLink className="connect-wallet" to="/wallet" onClick={() => btn_icon(!showmenu)}>
-                        <i className="fas fa-wallet"></i>&nbsp;
-                        Connect your wallet
+                        <i className="fas fa-wallet"></i>&nbsp;&nbsp;
+                        {connectButton}
                       </NavLink>
                     </div>
                     {/* <div className='navbar-item'>

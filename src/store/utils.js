@@ -1,4 +1,3 @@
-
 export const initEntityState = (initialValue, loading = true) => ({
     loading,
     data: initialValue,
@@ -52,4 +51,8 @@ export const initEntityState = (initialValue, loading = true) => ({
     }
 
     return shuffeled;
+  }
+
+  export const shortAddress = (address) => {
+    return address.substr(0, 7) + '...' + address.substr(address.length-5, address.length);
   }

@@ -3,7 +3,7 @@ import Footer from '../components/footer';
 import SliderMainParticleGrey from '../components/SliderMainParticleGrey1';
 import { createGlobalStyle } from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { walletConnect } from '../../store/actions/thunks/wallet';
+import { walletConnect } from '../../store/actions/thunks';
 
 const GlobalStyles = createGlobalStyle`
 // ANIMATED GRADIENT 1
@@ -73,14 +73,9 @@ const GlobalStyles = createGlobalStyle`
 }
 `;
 
-const Connect = () => {
-  const [isPNFT, setIsPNFT] = useState(true);
+const Lottery = () => {
   const dispatch = useDispatch();
-
-  const switchNftType = (value) => {
-    setIsPNFT(value);
-  }
-
+  
   const handleConnect = () => {
     dispatch(walletConnect());
   }
@@ -96,22 +91,8 @@ const Connect = () => {
         <div className="gradbg1"></div>
         <div className='wallet-container'>
           <div className='title'>
-            <h1>My Wallet</h1>
-            <div className='switch-container'>
-              <span 
-                className={`switch ${isPNFT ? 'active' : ''}`} 
-                onClick={() => switchNftType(true)}
-              >
-                P-NFTs
-              </span>
-              <span 
-                className={`switch ${isPNFT ? '' : 'active'}`} 
-                style={{marginLeft: "-5px"}} 
-                onClick={() => switchNftType(false)}
-              >
-                O-NFTs
-              </span>
-            </div>
+            <h1>Lottery</h1>
+            <p>The sales process eliminates the frantic rush associated with minting most new NFT projects and simultaneously empowers anybody to be a part of NFT history. OA-NFTs will be auctioned off in a series of descending price auctions, with a schedule communicated to the community in advance. Participation in this auction will require holding a P-NFT in the bidding Ethereum wallet</p>
           </div>
           <div className='connect-container'>
             <img src="/img/wallet/1.png" style={{margin: "100px 0 50px 0"}} width="100" height="100"/>
@@ -128,4 +109,4 @@ const Connect = () => {
     </div>
   );
 }
-export default Connect;
+export default Lottery;

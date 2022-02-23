@@ -12,6 +12,7 @@ import Explore from "./pages/explore";
 import Artist from "./pages/Artist";
 import ItemDetailRedux from "./pages/ItemDetailRedux";
 import Connect from "./pages/connect";
+import Lottery from "./pages/lottery";
 
 const EntityTest = () => {
   const params = useParams();
@@ -38,7 +39,7 @@ const App = () => {
         <Route path="/faq" element={<Faq />} />
         <Route path="/helpcenter" element={<Helpcenter />} />
         <Route path="entity/:id" element={<EntityTest />} />
-        <Route path="/lottery" element={<News />} />
+        <Route path="/lottery" element={<Lottery />} />
         <Route path="/wallet" element={<Connect />} />
       </Routes>
     </>

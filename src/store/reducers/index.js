@@ -4,13 +4,15 @@ import hotCollectionsReducer from './hotCollections';
 import authorListReducer from './authorList';
 import filterReducer from './filters';
 import blogPostsReducer from './blogs';
+import walletReducer from './wallet';
 
 export const rootReducer = combineReducers({
   NFT: nftReducer,
   hotCollection: hotCollectionsReducer,
   authors: authorListReducer,
   filters: filterReducer,
-  blogs: blogPostsReducer
+  blogs: blogPostsReducer,
+  wallet: walletReducer,
 });
 
 const reducers = (state, action) => rootReducer(state, action);

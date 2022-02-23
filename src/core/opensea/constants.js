@@ -5,6 +5,7 @@ const alchemyKey = process.env.REACT_APP_ALCHEMY_KEY;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyKey);
 
+export const mainNetId = 4;
 export const OPENSEA_URL = "https://opensea.io"
 export const DEFAULT_DECIMALS = 18
 export let web3Provider = typeof window.web3 !== 'undefined'
