@@ -43,7 +43,6 @@ const Header = function({ className }) {
     const netId = useSelector(selectors.netIdState);
 
     useEffect(() => {
-      console.log(netId, accountAddress);
       if (accountAddress.loading) {
         setConnectButton("waiting ...");
       } else {

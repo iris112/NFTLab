@@ -21,6 +21,18 @@ export const getNftDetail = asyncAction(
     'nft/GET_NFT_DETAIL_FAIL'
 )();
 
+export const getLotteryDetail = asyncAction(
+    'nft/GET_LOTTERY_DETAIL',
+    'nft/GET_LOTTERY_DETAIL_SUCCESS',
+    'nft/GET_LOTTERY_DETAIL_FAIL'
+)();
+
+export const getLotteryStatus = asyncAction(
+    'nft/GET_LOTTERY_STATUS',
+    'nft/GET_LOTTERY_STATUS_SUCCESS',
+    'nft/GET_LOTTERY_STATUS_FAIL'
+)();
+
 export const getHotCollections = asyncAction(
     'nft/GET_HOT_COLLECTIONS',
     'nft/GET_HOT_COLLECTIONS_SUCCESS',

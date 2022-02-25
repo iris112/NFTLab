@@ -5,7 +5,9 @@ import { initEntityState, entityLoadingStarted, entityLoadingSucceeded, entityLo
 export const defaultState = {
   nftBreakdown: initEntityState(null),
   nftDetail: initEntityState(null),
-  nftShowcase: initEntityState(null)
+  nftShowcase: initEntityState(null),
+  lottery: initEntityState(null),
+  lotteryStatus: initEntityState(null),
 };
 
 const states = (state = defaultState, action) => {
@@ -33,6 +35,20 @@ const states = (state = defaultState, action) => {
       return { ...state, nftShowcase: entityLoadingSucceeded(state.nftShowcase, action.payload) };
     case getType(actions.getNftShowcase.failure):
       return { ...state, nftShowcase: entityLoadingFailed(state.nftShowcase) };
+
+    case getType(actions.getLotteryDetail.request):
+      return { ...state, lottery: entityLoadingStarted(state.lottery, action.payload) };
+    case getType(actions.getLotteryDetail.success):
+      return { ...state, lottery: entityLoadingSucceeded(state.lottery, action.payload) };
+    case getType(actions.getLotteryDetail.failure):
+      return { ...state, lottery: entityLoadingFailed(state.lottery) };
+
+    case getType(actions.getLotteryStatus.request):
+      return { ...state, lotteryStatus: entityLoadingStarted(state.lotteryStatus, action.payload) };
+    case getType(actions.getLotteryStatus.success):
+      return { ...state, lotteryStatus: entityLoadingSucceeded(state.lotteryStatus, action.payload) };
+    case getType(actions.getLotteryStatus.failure):
+      return { ...state, lotteryStatus: entityLoadingFailed(state.lotteryStatus) };
 
     case getType(actions.clearNfts):
       return { ...state, nftBreakdown: initEntityState(null)};
